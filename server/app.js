@@ -2,11 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
-const bouncerRouter = require('./routes/bouncerRouter');
-const guestRouter = require('./routes/guestRouter');
-const authRouter = require('./routes/authRouter');
-const authentication = require('./middleware/authentication');
-const session = require('express-session');
+
+const orgRouter = require('../server/routes/orgRouter');
+const guestRouter = require('../server/routes/guestRouter');
+const authRouter = require('../server/routes/authRouter');
+const authentication = require('../server/middleware/authentication');
+
+// const session = require('express-session');
 
 const app = express();
 
@@ -14,20 +16,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  cookie: {},
-  resave: true,
-  saveUninitialized: true,
-}));
+// app.use(session({
+//   secret: process.env.SESSION_SECRET,
+//   cookie: {},
+//   resave: false,
+//   saveUninitialized: true,
+// }));
 
 app.use(morgan('dev'));
 
-app.use('/bouncer', authentication);
-app.use('/guest', authentication);
+app.use('/organizer', authentication);
+app.use('/organizer', authRouter);
 
-app.use('/bouncer', authRouter);
-app.use('/guest', userRouter);
-app.use('/guest', chirpRouter);
+// app.use('/organizer', orgRouter);
+app.use('/guest', guestRouter);
 
 module.exports = app;

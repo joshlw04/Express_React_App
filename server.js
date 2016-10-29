@@ -2,15 +2,24 @@ const path = require('path');
 const app = require('./server/app');
 const express = require('express');
 
-app.use(express.static(path.join(__dirname, 'dist-guest')));
+process.env.ENV = process.env.ENV || 'dev';
+
+app.use(express.static(path.join(__dirname, 'dist')));
 app.get('/', (request, response) => {
-  response.sendFile(path.join(__dirname, 'dist-guest/index.html'));
+  response.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-app.use(express.static(path.join(__dirname, 'dist-bouncer')));
-app.get('/', (request, response) => {
-  response.sendFile(path.join(__dirname, 'dist-bouncer/index.html'));
+app.use(express.static(path.join(__dirname, '/dist/guest')));
+app.get('/guest', (request, response) => {
+  response.sendFile(path.join(__dirname, 'dist/guest/index.html'));
 });
+
+app.use(express.static(path.join(__dirname, 'dist/bouncer')));
+app.get('/bouncer', (request, response) => {
+  response.sendFile(path.join(__dirname, 'dist/bouncer/index.html'));
+});
+
+// app.get('/', (req, res) => res.send('Hello world'));
 
 app.listen(3000, () => {
   console.log('listening on 3000');
