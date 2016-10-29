@@ -2,10 +2,10 @@ const path = require('path');
 
 module.exports = {
   devtool: 'source-map',
-  entry: {
-    'dist-bouncer/js/': path.join(__dirname, 'front_end', 'client-organizer', 'index.jsx'),
-    'dist-guest/js/': path.join(__dirname, 'front_end', 'client-guest', 'index.jsx'),
-  },
+  entry:
+    path.join(__dirname, 'front_end', 'index.jsx'),
+    // 'dist-bouncer/js/': path.join(__dirname, 'front_end', 'client-organizer', 'index.jsx'),
+    // 'dist-guest/js/': path.join(__dirname, 'front_end', 'client-guest', 'index.jsx'),,
   output: {
     path: path.join(__dirname, 'dist', 'js'),
     filename: 'bundle.js',

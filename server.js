@@ -14,9 +14,9 @@ app.get('/guest', (request, response) => {
   response.sendFile(path.join(__dirname, 'dist/guest/index.html'));
 });
 
-app.use(express.static(path.join(__dirname, 'dist/bouncer')));
-app.get('/bouncer', (request, response) => {
-  response.sendFile(path.join(__dirname, 'dist/bouncer/index.html'));
+app.use(express.static(path.join(__dirname, 'dist/organizer')));
+app.get('/organizer', (request, response) => {
+  response.sendFile(path.join(__dirname, 'dist/organizer/index.html'));
 });
 
 // app.get('/', (req, res) => res.send('Hello world'));
