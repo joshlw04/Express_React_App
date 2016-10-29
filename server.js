@@ -1,7 +1,6 @@
 const path = require('path');
-const app = require('./app/app');
+const app = require('./server/app');
 const express = require('express');
-const app = express();
 
 app.use(express.static(path.join(__dirname, 'dist-guest')));
 app.get('/', (request, response) => {
