@@ -23707,7 +23707,6 @@
 	  _createClass(Form, [{
 	    key: "render",
 	    value: function render() {
-	      console.log(this.props.eventNames);
 	      return _react2.default.createElement(
 	        "div",
 	        { id: "form-input" },
@@ -23741,10 +23740,15 @@
 	          _react2.default.createElement(
 	            "select",
 	            null,
-	            this.props.eventNames.map(function (event) {
+	            _react2.default.createElement(
+	              "option",
+	              null,
+	              "Choose your event"
+	            ),
+	            this.props.eventNames.map(function (event, idx) {
 	              return _react2.default.createElement(
 	                "option",
-	                null,
+	                { key: idx },
 	                event.name
 	              );
 	            })
@@ -23757,11 +23761,6 @@
 	              onClick: this.props.handleSubmitButton
 	            },
 	            "Submit"
-	          ),
-	          _react2.default.createElement(
-	            "button",
-	            { onClick: this.props.getEventNames },
-	            "Get Events"
 	          )
 	        )
 	      );

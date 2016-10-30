@@ -13,7 +13,7 @@ class Form extends Component {
   }
 
   render() {
-    console.log(this.props.eventNames);
+    // console.log(this.props.eventNames);
     return (
       <div id="form-input">
         <form>
@@ -43,10 +43,11 @@ class Form extends Component {
             onChange={this.props.handleChangeOfInput}
           />
           <select>
+            <option>Choose your event</option>
               {
-                this.props.eventNames.map((event) => {
+                this.props.eventNames.map((event, idx) => {
                   return (
-                    <option>
+                    <option key={idx}>
                       {event.name}
                     </option>
                   );
@@ -62,7 +63,6 @@ class Form extends Component {
           >
             Submit
           </button>
-          <button onClick={this.props.getEventNames}>Get Events</button>
         </form>
       </div>
     )
