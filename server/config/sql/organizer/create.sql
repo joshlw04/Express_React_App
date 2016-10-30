@@ -1,1 +1,1 @@
-INSERT INTO organizers (name, email) VALUES ($1, $2) RETURNING *;
+INSERT INTO organizers (name, email) VALUES ($1, $2);

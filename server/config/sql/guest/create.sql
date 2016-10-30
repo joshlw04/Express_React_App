@@ -1,1 +1,1 @@
-INSERT INTO guests (name, email) VALUES ($1, $2) RETURNING *;
+INSERT INTO guests (first_name, last_name, email, eventID) VALUES ($1, $2, $3, $4);

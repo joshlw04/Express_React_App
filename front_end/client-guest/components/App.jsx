@@ -25,7 +25,7 @@ class App extends Component {
 
   handleSubmitButton(e) {
     e.preventDefault();
-    const url = '/api/v1/guests';
+    const url = '/';
     request.post(url)
            .send(this.state)
            .then((response) => {
@@ -42,7 +42,7 @@ class App extends Component {
   render() {
     return (
       <div id="container">
-        <h1>Register for an event here!</h1>
+        <h1>Register for an event pee pee poop here!</h1>
         <Form
           handleChangeOfInput={this.handleChangeOfInput}
           handleSubmitButton={this.handleSubmitButton}
