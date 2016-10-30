@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.jsx';
+import Organizer from './components/Organizer.jsx';
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+ReactDOM.render(<Organizer />, document.querySelector('#organizer'));
