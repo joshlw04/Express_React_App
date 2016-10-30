@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const path = require('path');
 
-// const orgRouter = require('./routes/orgRouter');
+const eventRouter = require('./routes/eventRouter');
 const guestRouter = require('./routes/guestRouter');
 // const authRouter = require('./routes/authRouter');
 // const authentication = require('./middleware/authentication');
@@ -31,6 +31,8 @@ app.use(morgan('dev'));
 //
 // app.use('/organizer', orgRouter);
 app.use('/api/guests', guestRouter);
+app.use('/api/events', eventRouter);
+
 console.log('coming from app.js page');
 
 

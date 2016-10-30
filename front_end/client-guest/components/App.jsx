@@ -6,8 +6,10 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: '',
+      first_name: '',
+      last_name: '',
       email: '',
+      event_id: null,
     };
     this.handleChangeOfInput = this.handleChangeOfInput.bind(this);
     this.handleSubmitButton = this.handleSubmitButton.bind(this);

@@ -13,37 +13,44 @@ class Form extends Component {
   render() {
     return(
       <div id="form-input">
-        <input
-          id="input-name"
-          className="input"
-          type="text"
-          placeholder="First Name"
-          name="first_name"
-          onChange={this.props.handleChangeOfInput}
-        />
-        <input
-          id="input-name"
-          className="input"
-          type="text"
-          placeholder="Last Name"
-          name="last_name"
-          onChange={this.props.handleChangeOfInput}
-        />
+        <form>
+          <input
+            id="input-name"
+            className="input"
+            type="text"
+            placeholder="First Name"
+            name="first_name"
+            onChange={this.props.handleChangeOfInput}
+          />
+          <input
+            id="input-name"
+            className="input"
+            type="text"
+            placeholder="Last Name"
+            name="last_name"
+            onChange={this.props.handleChangeOfInput}
+          />
 
-        <input
-          id="input-email"
-          className="input"
-          type="text"
-          placeholder="Email"
-          name="email"
-          onChange={this.props.handleChangeOfInput}
-        />
-        <button
-          id="input-submit"
-          className="submit"
-          onClick={this.props.handleSubmitButton}>
-          Submit
-        </button>
+          <input
+            id="input-email"
+            className="input"
+            type="text"
+            placeholder="Email"
+            name="email"
+            onChange={this.props.handleChangeOfInput}
+          />
+          <select>
+            <option>Event 1</option>
+            <option>Event 2</option>
+            <option>Event 3</option>
+          </select>
+          <button
+            id="input-submit"
+            className="submit"
+            onClick={this.props.handleSubmitButton}>
+            Submit
+          </button>
+        </form>
       </div>
     )
   }

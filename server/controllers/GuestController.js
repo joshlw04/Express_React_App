@@ -27,7 +27,7 @@ class GuestController {
       event_id: req.body.event_id,
     };
     GuestDAO.create(guestData)
-           .then((guest) => res.status(200).json(chirp));
+           .then((guest) => res.status(200).json(guest));
   }
 
 }

@@ -7,22 +7,14 @@ module.exports = {
     inline: true,
     port: 8080,
   },
-  entry: {
-    'dist-organizer/js/': path.join(__dirname, 'front_end', 'client-organizer', 'index.jsx'),
-    'dist-guest/js/': path.join(__dirname, 'front_end', 'client-guest', 'index.jsx'),
-  },
+  entry:
+    // path.join(__dirname, 'front_end', 'index.jsx'),
+    // 'dist-organizer/js/': path.join(__dirname, 'front_end', 'client-organizer', 'index.jsx'),
+    path.join(__dirname, 'front_end', 'client-guest', 'index.jsx'), // this is correct
   output: {
-    path: path.join(__dirname, '/dist', '/js'),
+    path: path.join(__dirname, 'dist', 'js'),
     filename: 'bundle.js',
   },
-  // entry:
-  //   // path.join(__dirname, 'front_end', 'index.jsx'),
-  //   // 'dist-organizer/js/': path.join(__dirname, 'front_end', 'client-organizer', 'index.jsx'),
-  //   path.join(__dirname, 'front_end', 'client-guest', 'index.jsx'), // this is correct
-  // output: {
-  //   path: path.join(__dirname, 'dist', 'js'),
-  //   filename: 'bundle.js',
-  // },
   module: {
     loaders: [
       {

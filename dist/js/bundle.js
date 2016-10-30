@@ -42,9 +42,9 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/*!**********************************************!*\
-  !*** ./front_end/client-organizer/index.jsx ***!
-  \**********************************************/
+/*!******************************************!*\
+  !*** ./front_end/client-guest/index.jsx ***!
+  \******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57,7 +57,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _App = __webpack_require__(/*! ./components/App.jsx */ 179);
+	var _App = __webpack_require__(/*! ./components/App.jsx */ 172);
 	
 	var _App2 = _interopRequireDefault(_App);
 	
@@ -21946,7 +21946,110 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 3)))
 
 /***/ },
-/* 172 */,
+/* 172 */
+/*!***************************************************!*\
+  !*** ./front_end/client-guest/components/App.jsx ***!
+  \***************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _superagent = __webpack_require__(/*! superagent */ 173);
+	
+	var _superagent2 = _interopRequireDefault(_superagent);
+	
+	var _Form = __webpack_require__(/*! ./Form.jsx */ 178);
+	
+	var _Form2 = _interopRequireDefault(_Form);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var App = function (_Component) {
+	  _inherits(App, _Component);
+	
+	  function App() {
+	    _classCallCheck(this, App);
+	
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+	
+	    _this.state = {
+	      first_name: '',
+	      last_name: '',
+	      email: '',
+	      event_id: null
+	    };
+	    _this.handleChangeOfInput = _this.handleChangeOfInput.bind(_this);
+	    _this.handleSubmitButton = _this.handleSubmitButton.bind(_this);
+	
+	    // let eventID = location.search.split('eventID=')[1];
+	    // console.log(eventID);
+	    return _this;
+	  }
+	
+	  _createClass(App, [{
+	    key: 'handleChangeOfInput',
+	    value: function handleChangeOfInput(e) {
+	      var stateObj = {};
+	      var stateKey = e.target.name;
+	      stateObj[stateKey] = e.target.value;
+	      this.setState(stateObj);
+	    }
+	  }, {
+	    key: 'handleSubmitButton',
+	    value: function handleSubmitButton(e) {
+	      e.preventDefault();
+	      var url = '/';
+	      _superagent2.default.post(url).send(this.state).then(function (response) {
+	        console.log(response);
+	
+	        // this.setState({ name, email });
+	        // document.querySelector('#input-name').value = '';
+	        // document.querySelector('#input-email').value = '';
+	      }).catch(function (err) {
+	        // console.log(`Error: ${err}`);
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { id: 'container' },
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Register for an event poop pee poop here!'
+	        ),
+	        _react2.default.createElement(_Form2.default, {
+	          handleChangeOfInput: this.handleChangeOfInput,
+	          handleSubmitButton: this.handleSubmitButton
+	        })
+	      );
+	    }
+	  }]);
+	
+	  return App;
+	}(_react.Component);
+	
+	exports.default = App;
+
+/***/ },
 /* 173 */
 /*!************************************!*\
   !*** ./~/superagent/lib/client.js ***!
@@ -23548,113 +23651,10 @@
 
 
 /***/ },
-/* 178 */,
-/* 179 */
-/*!*******************************************************!*\
-  !*** ./front_end/client-organizer/components/App.jsx ***!
-  \*******************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _superagent = __webpack_require__(/*! superagent */ 173);
-	
-	var _superagent2 = _interopRequireDefault(_superagent);
-	
-	var _Form = __webpack_require__(/*! ./Form.jsx */ 180);
-	
-	var _Form2 = _interopRequireDefault(_Form);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var App = function (_Component) {
-	  _inherits(App, _Component);
-	
-	  function App() {
-	    _classCallCheck(this, App);
-	
-	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
-	
-	    _this.state = {
-	      name: '',
-	      email: ''
-	    };
-	    _this.handleChangeOfInput = _this.handleChangeOfInput.bind(_this);
-	    _this.handleSubmitButton = _this.handleSubmitButton.bind(_this);
-	
-	    // let eventID = location.search.split('eventID=')[1];
-	    // console.log(eventID);
-	    return _this;
-	  }
-	
-	  _createClass(App, [{
-	    key: 'handleChangeOfInput',
-	    value: function handleChangeOfInput(e) {
-	      var stateObj = {};
-	      var stateKey = e.target.name;
-	      stateObj[stateKey] = e.target.value;
-	      this.setState(stateObj);
-	    }
-	  }, {
-	    key: 'handleSubmitButton',
-	    value: function handleSubmitButton(e) {
-	      e.preventDefault();
-	      var url = '/api/v1/guests';
-	      _superagent2.default.post(url).send(this.state).then(function (response) {
-	        console.log(response);
-	
-	        // this.setState({ name, email });
-	        // document.querySelector('#input-name').value = '';
-	        // document.querySelector('#input-email').value = '';
-	      }).catch(function (err) {
-	        // console.log(`Error: ${err}`);
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { id: 'container' },
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          'Register for an event here!'
-	        ),
-	        _react2.default.createElement(_Form2.default, {
-	          handleChangeOfInput: this.handleChangeOfInput,
-	          handleSubmitButton: this.handleSubmitButton
-	        })
-	      );
-	    }
-	  }]);
-	
-	  return App;
-	}(_react.Component);
-	
-	exports.default = App;
-
-/***/ },
-/* 180 */
-/*!********************************************************!*\
-  !*** ./front_end/client-organizer/components/Form.jsx ***!
-  \********************************************************/
+/* 178 */
+/*!****************************************************!*\
+  !*** ./front_end/client-guest/components/Form.jsx ***!
+  \****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23697,29 +23697,60 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { id: "form-input" },
-	        _react2.default.createElement("input", {
-	          id: "input-name",
-	          className: "input",
-	          type: "text",
-	          placeholder: "Name",
-	          name: "name",
-	          onChange: this.props.handleChangeOfInput
-	        }),
-	        _react2.default.createElement("input", {
-	          id: "input-email",
-	          className: "input",
-	          type: "text",
-	          placeholder: "Email",
-	          name: "email",
-	          onChange: this.props.handleChangeOfInput
-	        }),
 	        _react2.default.createElement(
-	          "button",
-	          {
-	            id: "input-submit",
-	            className: "submit",
-	            onClick: this.props.handleSubmitButton },
-	          "Submit"
+	          "form",
+	          null,
+	          _react2.default.createElement("input", {
+	            id: "input-name",
+	            className: "input",
+	            type: "text",
+	            placeholder: "First Name",
+	            name: "first_name",
+	            onChange: this.props.handleChangeOfInput
+	          }),
+	          _react2.default.createElement("input", {
+	            id: "input-name",
+	            className: "input",
+	            type: "text",
+	            placeholder: "Last Name",
+	            name: "last_name",
+	            onChange: this.props.handleChangeOfInput
+	          }),
+	          _react2.default.createElement("input", {
+	            id: "input-email",
+	            className: "input",
+	            type: "text",
+	            placeholder: "Email",
+	            name: "email",
+	            onChange: this.props.handleChangeOfInput
+	          }),
+	          _react2.default.createElement(
+	            "select",
+	            null,
+	            _react2.default.createElement(
+	              "option",
+	              null,
+	              "Event 1"
+	            ),
+	            _react2.default.createElement(
+	              "option",
+	              null,
+	              "Event 2"
+	            ),
+	            _react2.default.createElement(
+	              "option",
+	              null,
+	              "Event 3"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "button",
+	            {
+	              id: "input-submit",
+	              className: "submit",
+	              onClick: this.props.handleSubmitButton },
+	            "Submit"
+	          )
 	        )
 	      );
 	    }
