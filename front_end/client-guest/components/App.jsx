@@ -9,14 +9,22 @@ class App extends Component {
       first_name: '',
       last_name: '',
       email: '',
-      event_id: null,
+      eventNames: [],
     };
     this.handleChangeOfInput = this.handleChangeOfInput.bind(this);
     this.handleSubmitButton = this.handleSubmitButton.bind(this);
-
-    // let eventID = location.search.split('eventID=')[1];
-    // console.log(eventID);
+    // this.getEventNames = this.getEventNames.bind(this);
   }
+  componentDidMount() {
+    // e.preventDefault();
+    request.get('/api/events')
+           .then((response) => {
+             console.log(response.body);
+             this.setState({ eventNames: response.body });
+           });
+  }
+  // getEventNames(e) {
+  // }
 
   handleChangeOfInput(e) {
     const stateObj = {};
@@ -27,19 +35,17 @@ class App extends Component {
 
   handleSubmitButton(e) {
     e.preventDefault();
-    const url = '/';
-    request.post(url)
+    request.post('/api/guests')
            .send(this.state)
            .then((response) => {
              console.log(response);
-
-      // this.setState({ name, email });
-      // document.querySelector('#input-name').value = '';
-      // document.querySelector('#input-email').value = '';
-        }).catch((err) => {
-      // console.log(`Error: ${err}`);
-    });
+            //  document.querySelector('#input-name').value = '';
+            //  document.querySelector('#input-email').value = '';
+           }).catch((err) => {
+             console.log(`Error: ${err}`);
+           });
   }
+
 
   render() {
     return (
@@ -48,6 +54,8 @@ class App extends Component {
         <Form
           handleChangeOfInput={this.handleChangeOfInput}
           handleSubmitButton={this.handleSubmitButton}
+          getEventNames={this.getEventNames}
+          eventNames={this.state.eventNames}
         />
       </div>
     );

@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 const propTypes = {
   handleChangeOfInput: React.PropTypes.func,
   handleSubmitButton: React.PropTypes.func,
+  getEventNames: React.PropTypes.func,
+  eventNames: React.PropTypes.array,
 };
 
 class Form extends Component {
@@ -11,7 +13,8 @@ class Form extends Component {
   }
 
   render() {
-    return(
+    console.log(this.props.eventNames);
+    return (
       <div id="form-input">
         <form>
           <input
@@ -40,16 +43,26 @@ class Form extends Component {
             onChange={this.props.handleChangeOfInput}
           />
           <select>
-            <option>Event 1</option>
-            <option>Event 2</option>
-            <option>Event 3</option>
+              {
+                this.props.eventNames.map((event) => {
+                  return (
+                    <option>
+                      {event.name}
+                    </option>
+                  );
+                })
+              }
+            {/* <option>Event 2</option>
+            <option>Event 3</option> */}
           </select>
           <button
             id="input-submit"
             className="submit"
-            onClick={this.props.handleSubmitButton}>
+            onClick={this.props.handleSubmitButton}
+          >
             Submit
           </button>
+          <button onClick={this.props.getEventNames}>Get Events</button>
         </form>
       </div>
     )

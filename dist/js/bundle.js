@@ -21992,17 +21992,29 @@
 	      first_name: '',
 	      last_name: '',
 	      email: '',
-	      event_id: null
+	      eventNames: []
 	    };
 	    _this.handleChangeOfInput = _this.handleChangeOfInput.bind(_this);
 	    _this.handleSubmitButton = _this.handleSubmitButton.bind(_this);
-	
-	    // let eventID = location.search.split('eventID=')[1];
-	    // console.log(eventID);
+	    // this.getEventNames = this.getEventNames.bind(this);
 	    return _this;
 	  }
 	
 	  _createClass(App, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      // e.preventDefault();
+	      _superagent2.default.get('/api/events').then(function (response) {
+	        console.log(response.body);
+	        _this2.setState({ eventNames: response.body });
+	      });
+	    }
+	    // getEventNames(e) {
+	    // }
+	
+	  }, {
 	    key: 'handleChangeOfInput',
 	    value: function handleChangeOfInput(e) {
 	      var stateObj = {};
@@ -22014,15 +22026,12 @@
 	    key: 'handleSubmitButton',
 	    value: function handleSubmitButton(e) {
 	      e.preventDefault();
-	      var url = '/';
-	      _superagent2.default.post(url).send(this.state).then(function (response) {
+	      _superagent2.default.post('/api/guests').send(this.state).then(function (response) {
 	        console.log(response);
-	
-	        // this.setState({ name, email });
-	        // document.querySelector('#input-name').value = '';
-	        // document.querySelector('#input-email').value = '';
+	        //  document.querySelector('#input-name').value = '';
+	        //  document.querySelector('#input-email').value = '';
 	      }).catch(function (err) {
-	        // console.log(`Error: ${err}`);
+	        console.log('Error: ' + err);
 	      });
 	    }
 	  }, {
@@ -22038,7 +22047,9 @@
 	        ),
 	        _react2.default.createElement(_Form2.default, {
 	          handleChangeOfInput: this.handleChangeOfInput,
-	          handleSubmitButton: this.handleSubmitButton
+	          handleSubmitButton: this.handleSubmitButton,
+	          getEventNames: this.getEventNames,
+	          eventNames: this.state.eventNames
 	        })
 	      );
 	    }
@@ -23679,7 +23690,9 @@
 	
 	var propTypes = {
 	  handleChangeOfInput: _react2.default.PropTypes.func,
-	  handleSubmitButton: _react2.default.PropTypes.func
+	  handleSubmitButton: _react2.default.PropTypes.func,
+	  getEventNames: _react2.default.PropTypes.func,
+	  eventNames: _react2.default.PropTypes.array
 	};
 	
 	var Form = function (_Component) {
@@ -23694,6 +23707,7 @@
 	  _createClass(Form, [{
 	    key: "render",
 	    value: function render() {
+	      console.log(this.props.eventNames);
 	      return _react2.default.createElement(
 	        "div",
 	        { id: "form-input" },
@@ -23727,29 +23741,27 @@
 	          _react2.default.createElement(
 	            "select",
 	            null,
-	            _react2.default.createElement(
-	              "option",
-	              null,
-	              "Event 1"
-	            ),
-	            _react2.default.createElement(
-	              "option",
-	              null,
-	              "Event 2"
-	            ),
-	            _react2.default.createElement(
-	              "option",
-	              null,
-	              "Event 3"
-	            )
+	            this.props.eventNames.map(function (event) {
+	              return _react2.default.createElement(
+	                "option",
+	                null,
+	                event.name
+	              );
+	            })
 	          ),
 	          _react2.default.createElement(
 	            "button",
 	            {
 	              id: "input-submit",
 	              className: "submit",
-	              onClick: this.props.handleSubmitButton },
+	              onClick: this.props.handleSubmitButton
+	            },
 	            "Submit"
+	          ),
+	          _react2.default.createElement(
+	            "button",
+	            { onClick: this.props.getEventNames },
+	            "Get Events"
 	          )
 	        )
 	      );
