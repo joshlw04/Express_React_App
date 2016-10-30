@@ -2,16 +2,15 @@ const path = require('path');
 
 module.exports = {
   devtool: 'source-map',
-  entry:
-    // path.join(__dirname, 'front_end', 'index.jsx'),
-    // 'dist-organizer/js/': path.join(__dirname, 'front_end', 'client-organizer', 'index.jsx'),
-    path.join(__dirname, 'front_end', 'client-guest', 'index.jsx'), // this is correct
   devServer: {
     contentBase: path.join(__dirname, 'dist', 'js'), // where the bundle lives?
     inline: true,
     port: 8080,
   },
-
+  entry:
+    // path.join(__dirname, 'front_end', 'index.jsx'),
+    // 'dist-organizer/js/': path.join(__dirname, 'front_end', 'client-organizer', 'index.jsx'),
+    path.join(__dirname, 'front_end', 'client-guest', 'index.jsx'), // this is correct
   output: {
     path: path.join(__dirname, 'dist', 'js'),
     filename: 'bundle.js',
@@ -28,6 +27,8 @@ module.exports = {
       },
     ],
   },
+
+
 };
 // const path = require('path');
 

@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const path = require('path');
 
 // const orgRouter = require('./routes/orgRouter');
 const guestRouter = require('./routes/guestRouter');
@@ -29,7 +30,8 @@ app.use(morgan('dev'));
 // app.use('/organizer', authRouter);
 //
 // app.use('/organizer', orgRouter);
-app.use('/guests', guestRouter);
+//app.use('/guests', guestRouter);
 console.log('coming from app.js page');
+
 
 module.exports = app;

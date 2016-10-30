@@ -27,6 +27,15 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.get('/', (request, response) => {
   response.sendFile(path.join(__dirname, 'dist/index.html'));
 });
+app.get('/api/weather/', (request, response) => {
+  response.sendFile(path.join(__dirname, 'dist/dist-guest/index.html'));
+});
+app.get('/guests/', (request, response) => {
+  response.sendFile(path.join(__dirname, 'dist', 'dist-guest', 'index.html'));
+});
+
+
+
 
 // app.use(express.static(path.join(__dirname, '/dist/dist-guest')));
 // app.get('/guest', (request, response) => {
