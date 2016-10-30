@@ -13,7 +13,6 @@ class Form extends Component {
   }
 
   render() {
-    // console.log(this.props.eventNames);
     return (
       <div id="form-input">
         <form>
@@ -42,19 +41,21 @@ class Form extends Component {
             name="email"
             onChange={this.props.handleChangeOfInput}
           />
-          <select>
+          <select
+            id="input-event-id"
+            onChange={this.props.handleChangeOfInput}
+            name="event_id"
+          >
             <option>Choose your event</option>
-              {
+            {
                 this.props.eventNames.map((event, idx) => {
                   return (
-                    <option key={idx}>
+                    <option key={idx} value={event.id}>
                       {event.name}
                     </option>
                   );
                 })
               }
-            {/* <option>Event 2</option>
-            <option>Event 3</option> */}
           </select>
           <button
             id="input-submit"

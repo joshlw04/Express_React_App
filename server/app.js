@@ -4,10 +4,12 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const path = require('path');
 
+const authRouter = require('./routes/authRouter');
+const authentication = require('./middleware/authentication');
+
 const eventRouter = require('./routes/eventRouter');
+const orgRouter = require('./routes/orgRouter');
 const guestRouter = require('./routes/guestRouter');
-// const authRouter = require('./routes/authRouter');
-// const authentication = require('./middleware/authentication');
 
 const session = require('express-session');
 
@@ -26,14 +28,11 @@ app.use(session({
 
 app.use(morgan('dev'));
 
-// app.use('/organizer', authentication);
-// app.use('/organizer', authRouter);
+app.use('/api/organizers', authentication);
+app.use('/api/organizers', authRouter);
 //
-// app.use('/organizer', orgRouter);
+app.use('/api/organizers', orgRouter);
 app.use('/api/guests', guestRouter);
 app.use('/api/events', eventRouter);
-
-console.log('coming from app.js page');
-
 
 module.exports = app;

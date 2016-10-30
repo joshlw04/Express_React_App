@@ -21992,11 +21992,12 @@
 	      first_name: '',
 	      last_name: '',
 	      email: '',
+	      event_id: '',
 	      eventNames: []
 	    };
+	
 	    _this.handleChangeOfInput = _this.handleChangeOfInput.bind(_this);
 	    _this.handleSubmitButton = _this.handleSubmitButton.bind(_this);
-	    // this.getEventNames = this.getEventNames.bind(this);
 	    return _this;
 	  }
 	
@@ -22005,15 +22006,10 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 	
-	      // e.preventDefault();
 	      _superagent2.default.get('/api/events').then(function (response) {
-	        console.log(response.body);
 	        _this2.setState({ eventNames: response.body });
 	      });
 	    }
-	    // getEventNames(e) {
-	    // }
-	
 	  }, {
 	    key: 'handleChangeOfInput',
 	    value: function handleChangeOfInput(e) {
@@ -22027,7 +22023,6 @@
 	    value: function handleSubmitButton(e) {
 	      e.preventDefault();
 	      _superagent2.default.post('/api/guests').send(this.state).then(function (response) {
-	        console.log(response);
 	        //  document.querySelector('#input-name').value = '';
 	        //  document.querySelector('#input-email').value = '';
 	      }).catch(function (err) {
@@ -22043,7 +22038,7 @@
 	        _react2.default.createElement(
 	          'h1',
 	          null,
-	          'Register for an event poop pee poop here!'
+	          'Register for an event here!'
 	        ),
 	        _react2.default.createElement(_Form2.default, {
 	          handleChangeOfInput: this.handleChangeOfInput,
@@ -23739,7 +23734,11 @@
 	          }),
 	          _react2.default.createElement(
 	            "select",
-	            null,
+	            {
+	              id: "input-event-id",
+	              onChange: this.props.handleChangeOfInput,
+	              name: "event_id"
+	            },
 	            _react2.default.createElement(
 	              "option",
 	              null,
@@ -23748,7 +23747,7 @@
 	            this.props.eventNames.map(function (event, idx) {
 	              return _react2.default.createElement(
 	                "option",
-	                { key: idx },
+	                { key: idx, value: event.id },
 	                event.name
 	              );
 	            })

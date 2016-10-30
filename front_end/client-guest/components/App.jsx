@@ -9,22 +9,20 @@ class App extends Component {
       first_name: '',
       last_name: '',
       email: '',
+      event_id: '',
       eventNames: [],
     };
+
     this.handleChangeOfInput = this.handleChangeOfInput.bind(this);
     this.handleSubmitButton = this.handleSubmitButton.bind(this);
-    // this.getEventNames = this.getEventNames.bind(this);
   }
+
   componentDidMount() {
-    // e.preventDefault();
     request.get('/api/events')
            .then((response) => {
-             console.log(response.body);
              this.setState({ eventNames: response.body });
            });
   }
-  // getEventNames(e) {
-  // }
 
   handleChangeOfInput(e) {
     const stateObj = {};
@@ -38,7 +36,6 @@ class App extends Component {
     request.post('/api/guests')
            .send(this.state)
            .then((response) => {
-             console.log(response);
             //  document.querySelector('#input-name').value = '';
             //  document.querySelector('#input-email').value = '';
            }).catch((err) => {
@@ -50,7 +47,7 @@ class App extends Component {
   render() {
     return (
       <div id="container">
-        <h1>Register for an event poop pee poop here!</h1>
+        <h1>Register for an event here!</h1>
         <Form
           handleChangeOfInput={this.handleChangeOfInput}
           handleSubmitButton={this.handleSubmitButton}
