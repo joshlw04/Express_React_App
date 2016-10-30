@@ -22032,7 +22032,7 @@
 	        _react2.default.createElement(
 	          'h1',
 	          null,
-	          'Register for an event pee pee poop here!'
+	          'Register for an event poop pee poop here!'
 	        ),
 	        _react2.default.createElement(_Form2.default, {
 	          handleChangeOfInput: this.handleChangeOfInput,
@@ -23699,8 +23699,16 @@
 	          id: "input-name",
 	          className: "input",
 	          type: "text",
-	          placeholder: "Name",
-	          name: "name",
+	          placeholder: "First Name",
+	          name: "first_name",
+	          onChange: this.props.handleChangeOfInput
+	        }),
+	        _react2.default.createElement("input", {
+	          id: "input-name",
+	          className: "input",
+	          type: "text",
+	          placeholder: "Last Name",
+	          name: "last_name",
 	          onChange: this.props.handleChangeOfInput
 	        }),
 	        _react2.default.createElement("input", {

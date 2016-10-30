@@ -17,10 +17,19 @@ class Form extends Component {
           id="input-name"
           className="input"
           type="text"
-          placeholder="Name"
-          name="name"
+          placeholder="First Name"
+          name="first_name"
           onChange={this.props.handleChangeOfInput}
         />
+        <input
+          id="input-name"
+          className="input"
+          type="text"
+          placeholder="Last Name"
+          name="last_name"
+          onChange={this.props.handleChangeOfInput}
+        />
+
         <input
           id="input-email"
           className="input"
