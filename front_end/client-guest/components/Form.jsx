@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 const propTypes = {
   handleChangeOfInput: React.PropTypes.func,
-  handleSubmitButton: React.PropTypes.func,
-  getEventNames: React.PropTypes.func,
+  handleGuestSubmitButton: React.PropTypes.func,
   eventNames: React.PropTypes.array,
 };
 
@@ -60,7 +59,7 @@ class Form extends Component {
           <button
             id="input-submit"
             className="submit"
-            onClick={this.props.handleSubmitButton}
+            onClick={this.props.handleGuestSubmitButton}
           >
             Submit
           </button>

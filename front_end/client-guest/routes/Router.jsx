@@ -1,19 +1,20 @@
 import React from 'react';
 import { Router, Route, hashHistory } from 'react-router';
 import Welcome from '../components/Welcome.jsx';
-import Login from '../components/Login.jsx';
+// import Login from '../components/Login.jsx';
 // import Register from '../components/Register.jsx';
-// import Guest from '../components/Guest.jsx';
-// import Success from '../components/Success.jsx';
+import Success from '../components/Success.jsx';
+import Guest from '../components/Guest.jsx';
+import Organizer from '../components/Organizer.jsx';
 
 const Routes = () => {
   return (
     <Router history={hashHistory}>
       <Route path="/" component={Welcome} />
-      <Route path="login" component={Login} />
-      {/* <Route path="register" component={Register} />
-      <Route path="guest" component={Guest} />
-      <Route path="success" component={Success} /> */}
+      <Route path="/guests" component={Guest} />
+      <Route path="/organizers" component={Organizer} />
+      <Route path="/success" component={Success} />
+      {/* <Route path="register" component={Register} /> */}
     </Router>
   );
 };
