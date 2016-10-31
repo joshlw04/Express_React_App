@@ -35,9 +35,6 @@ app.get('/guest', (request, response) => {
   response.sendFile(path.join(__dirname, 'dist/dist-guest/index.html'));
 });
 */
-
-
-
 // app.use(express.static(path.join(__dirname, '/dist/dist-guest')));
 // app.get('/guest', (request, response) => {
 //   response.sendFile(path.join(__dirname, 'dist/dist-guest/index.html'));

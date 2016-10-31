@@ -66,7 +66,7 @@ class Form extends Component {
           </button>
         </form>
       </div>
-    )
+    );
   }
 }
 

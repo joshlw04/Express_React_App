@@ -8,8 +8,8 @@ module.exports = {
     port: 8080,
   },
   entry: {
-    'dist-organizer/js/': path.join(__dirname, 'front_end', 'client-organizer', 'index.jsx'),
-    'dist-guest/js/': path.join(__dirname, 'front_end', 'client-guest', 'index.jsx'),
+    'dist-organizer/js': path.join(__dirname, 'front_end', 'client-organizer', 'index.jsx'),
+    'dist-guest/js': path.join(__dirname, 'front_end', 'client-guest', 'index.jsx'),
   },
   output: {
     path: path.join(__dirname, 'dist'),

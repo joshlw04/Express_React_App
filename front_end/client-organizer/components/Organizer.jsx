@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import request from 'superagent';
-import Form from './Form.jsx';
 
 class Organizer extends Component {
   constructor() {
@@ -9,8 +8,6 @@ class Organizer extends Component {
       name: '',
       email: '',
     };
-
-
   }
 
   render() {

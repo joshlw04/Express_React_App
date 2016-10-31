@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import request from 'superagent';
 import Form from './Form.jsx';
-import Organizer from './Organizer.jsx';
+// import Organizer from './Organizer.jsx';
 import Login from './Login.jsx';
 import Register from './Register.jsx';
-import Guest from './Guest.jsx';
+// import Guest from './Guest.jsx';
 
 class App extends Component {
   constructor() {
@@ -40,8 +40,8 @@ class App extends Component {
     request.post('/api/guests')
            .send(this.state)
            .then((response) => {
-            //  document.querySelector('#input-name').value = '';
-            //  document.querySelector('#input-email').value = '';
+             document.querySelector('#input-name').value = '';
+             document.querySelector('#input-email').value = '';
            }).catch((err) => {
              console.log(`Error: ${err}`);
            });
@@ -58,11 +58,8 @@ class App extends Component {
           getEventNames={this.getEventNames}
           eventNames={this.state.eventNames}
         />
-        
-        <Organizer />
         <Login />
         <Register />
-        <Guest />
       </div>
     );
   }
